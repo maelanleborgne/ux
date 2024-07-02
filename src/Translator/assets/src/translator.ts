@@ -43,7 +43,7 @@ import { format } from './formatters/formatter';
 let _locale: LocaleType | null = null;
 let _localeFallbacks: Record<LocaleType, LocaleType> = {};
 
-let _registeredTranslations: RegisteredTranslationsType = {};
+const _registeredTranslations: RegisteredTranslationsType = {};
 
 export function setLocale(locale: LocaleType | null) {
     _locale = locale;
@@ -183,7 +183,7 @@ export function registerDomain(domainTranslations: RegisteredTranslationsType) {
 
 function getRegisteredMessage(key: string, domain: string): Message<TranslationsType, LocaleType>
 {
-    let message: Message<TranslationsType, LocaleType> = {id: key, translations: {}};
+    const message: Message<TranslationsType, LocaleType> = {id: key, translations: {}};
 
     for (const domainName of [domain, domain+'+intl-icu']) {
         if (typeof _registeredTranslations[domainName] === 'undefined') {
